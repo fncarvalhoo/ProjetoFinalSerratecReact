@@ -3,11 +3,12 @@ import styled from "styled-components";
 
 export const AreaHeader = styled.div`
   height: 60px;
-  background-color: red;
-  color: white;
+  background-color: #323238;
+  color: #e1e1e6;
 `;
 
 export const Container = styled.div`
+  width: 100%;
   padding: 5px 20px;
   display: flex;
   align-items: center;
@@ -26,13 +27,14 @@ export const Container = styled.div`
     li{
         list-style: none;
         margin-left: 60px;
-        margin-top: 0px;
+        margin-top: 5px;
         a{
             text-decoration: none;
-            color: white;
+            color: #e1e1e6;
+            font-size: 1.2rem;
 
             &:hover{
-                color: green;
+                color: white;
             }
         }
     }
