@@ -48,14 +48,14 @@ export function Home() {
       });
   }, []);
 
-  const [produtos, setProtudos] = useState([]);
+  const [produtos, setProducts] = useState([]);
 
   useEffect(() => {
     produtoService
-      .getProdutos()
+      .getProducts()
       .then((response) => {
         console.log(response.data);
-        setProtudos(response.data);
+        setProducts(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -64,8 +64,21 @@ export function Home() {
 
   return (
     <div>
-      <Header />
-      <h1>Home</h1>
+    <Header />
+    <div style={{ display: 'flex', flexDirection: 'column'}}>
+      
+      <h1>Produtos</h1>
+      {
+        produtos.map(res => {
+            return(
+            <>
+                <img style={{width:100, height:100}} src={res.fotoLink}></img>
+                <span>{res.nome}</span>
+            </>
+            )
+        })
+      }
+    </div>
     </div>
   );
 }
