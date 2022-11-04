@@ -1,9 +1,9 @@
 import {api} from '../api/api';
 
-const getProdutos = () => {
+const getProducts = () => {
     return api.get(`produto`)
 }
 
 export default {
-    getProdutos
+    getProducts
 }
