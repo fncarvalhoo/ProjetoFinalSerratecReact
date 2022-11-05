@@ -4,6 +4,7 @@ import categoriaService from "../../services/requests/categoriaService";
 import pedidoService from "../../services/requests/pedidoService";
 import produtoService from "../../services/requests/produtoService";
 import { Header } from "../../components/header/index";
+import { TabelaProduto } from "../../components/Tabela/TabelaProduto";
 
 
 export function Home() {
@@ -63,18 +64,25 @@ export function Home() {
       });
   }, []);
 
-  return (
+  // return (
+  //   <div>
+  //     <Header />
+  //     <h1>Produtos</h1>
+  //     {produtos.map((res, index) => {
+  //       console.log("dadadadada", res.nome);
+  //       return (
+  //         <div className="Produtos" key={index}>
+  //           <span id="produto">{res.imagemProduto}</span>
+  //         </div>
+  //       );
+  //     })}
+  //   </div>
+  // );
+
+  return(
     <div>
-      <Header />
-      <h1>Produtos</h1>
-      {produtos.map((res, index) => {
-        console.log("dadadadada", res.nome);
-        return (
-          <div className="Produtos" key={index}>
-            <span id="produto">{res.imagemProduto}</span>
-          </div>
-        );
-      })}
+      <Header/>
+      <TabelaProduto/>
     </div>
-  );
+  )
 }
