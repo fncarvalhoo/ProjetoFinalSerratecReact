@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const AreaHeader = styled.div`
   height: 60px;
   background-color: red;
@@ -23,18 +22,18 @@ export const Container = styled.div`
       display: flex;
     }
 
-    li{
-        list-style: none;
-        margin-left: 60px;
-        margin-top: 0px;
-        a{
-            text-decoration: none;
-            color: white;
+    li {
+      list-style: none;
+      margin-left: 60px;
+      margin-top: 0px;
+      a {
+        text-decoration: none;
+        color: white;
 
-            &:hover{
-                color: green;
-            }
+        &:hover {
+          color: green;
         }
+      }
     }
   }
 `;
