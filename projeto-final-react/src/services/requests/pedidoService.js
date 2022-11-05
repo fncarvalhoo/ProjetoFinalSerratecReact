@@ -1,7 +1,7 @@
 import {api} from '../api/api';
 
 const getRequests = () => {
-    return api.get(`pedido`)
+    return api.get(`pedidos`)
 }
 
 export default {

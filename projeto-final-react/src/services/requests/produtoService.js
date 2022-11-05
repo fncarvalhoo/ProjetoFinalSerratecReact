@@ -1,9 +1,9 @@
-import {api} from '../api/api';
+import { api } from "../api/api";
 
 const getProducts = () => {
-    return api.get(`produto`)
-}
+  return api.get(`produtos`);
+};
 
 export default {
-    getProducts
-}
+  getProducts,
+};

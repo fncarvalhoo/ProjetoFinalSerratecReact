@@ -64,21 +64,16 @@ export function Home() {
 
   return (
     <div>
-    <Header />
-    <div style={{ display: 'flex', flexDirection: 'column'}}>
-      
+      <Header />
       <h1>Produtos</h1>
-      {
-        produtos.map(res => {
-            return(
-            <>
-                <img style={{width:100, height:100}} src={res.fotoLink}></img>
-                <span>{res.nome}</span>
-            </>
-            )
-        })
-      }
-    </div>
+      {produtos.map((res, index) => {
+        console.log("dadadadada", res.nome);
+        return (
+          <div className="Produtos" key={index}>
+            <span id="produto">{res.imagemProduto}</span>
+          </div>
+        );
+      })}
     </div>
   );
 }
