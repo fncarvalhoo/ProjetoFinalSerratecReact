@@ -30,8 +30,8 @@ export function Cliente() {
             <span id="cliente">{res.nomeUsuario}</span>
             <span id="cliente">{res.email}</span>
             <span id="cliente">{res.cpf}</span>
-            <span id="cliente">{res.endereco[0].cep}</span>
-            <span id="cliente">{res.pedido[0].status}</span>
+            {/* <span id="cliente">{res.endereco[0].cep}</span>
+            <span id="cliente">{res.pedido[0].status}</span> */}
           </div>
         );
       })}

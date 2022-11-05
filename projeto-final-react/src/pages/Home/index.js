@@ -5,6 +5,7 @@ import pedidoService from "../../services/requests/pedidoService";
 import produtoService from "../../services/requests/produtoService";
 import { Header } from "../../components/header/index";
 
+
 export function Home() {
   const [cliente, setClients] = useState([]);
 

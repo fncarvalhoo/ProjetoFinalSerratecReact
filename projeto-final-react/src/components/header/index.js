@@ -1,17 +1,19 @@
 import React from "react";
 
-import { AreaHeader, Container } from "./styled.js";
+import { Navbar, Container } from "./styled.js";
 import { Link } from "react-router-dom";
+import logo from '../../utils/imagens/ecommerce.png'
 
 export function Header() {
   return (
-    <AreaHeader>
+    <Navbar>
       <Container>
-        <div className="logo">LOGO</div>
-        <nav>
+        <Link to="/">
+          <img src={logo} alt="Produtos"/>
+        </Link>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link className="linkref" to="/">Home</Link>
             </li>
             <li>
               <Link to="/areaCliente">Cliente</Link>
@@ -23,8 +25,7 @@ export function Header() {
               <Link to="/dadadadad">Sobre</Link>
             </li>
           </ul>
-        </nav>
       </Container>
-    </AreaHeader>
+    </Navbar>
   );
 }

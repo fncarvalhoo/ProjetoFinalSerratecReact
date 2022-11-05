@@ -1,39 +1,36 @@
 import styled from "styled-components";
 
-export const AreaHeader = styled.div`
-  height: 60px;
-  background-color: red;
-  color: white;
-`;
-
 export const Container = styled.div`
-  padding: 5px 20px;
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+  background-color: #222;
+  padding: 1em;
 
-  .logo {
-    flex: 1;
-    margin-top: 4px;
-    font-size: 30px;
+  img{
+    width: 40px;
+    height: 40px;
   }
+  ul{
+    display: flex;
+    list-style: none;
+    align-items: center;
 
-  nav {
-    ul {
-      display: flex;
-    }
-
-    li {
-      list-style: none;
-      margin-left: 60px;
-      margin-top: 0px;
-      a {
-        text-decoration: none;
-        color: white;
-
+    li{
+      margin-right: 1em;
+      
+      a{
+        font-size: 1.2em;
+        color: #fff;
         &:hover {
-          color: green;
-        }
+           color: #ffbb33;
+         }
       }
     }
   }
+
+`;
+
+export const Navbar = styled.div`
+
+
 `;
