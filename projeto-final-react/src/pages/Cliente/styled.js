@@ -15,7 +15,6 @@ export const Container = styled.div`
     #cliente{
         margin-right: 20px;
         font-size: 15px;
-        border-bottom: 1px solid red;
       }
 
 `;
