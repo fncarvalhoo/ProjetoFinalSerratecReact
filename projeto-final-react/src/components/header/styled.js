@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: #222;
+  background-color: #5C0D76;
   padding: 1em;
 
   img{

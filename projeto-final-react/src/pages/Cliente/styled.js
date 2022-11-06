@@ -3,18 +3,6 @@ import styled from "styled-components";
 export const Container = styled.div`
 
 
-
-.divisao{
-border-bottom: 1px solid #323238;
-}
-
-
-
-
-
-
-
-
 `;
 
 export const Content = styled.div`
