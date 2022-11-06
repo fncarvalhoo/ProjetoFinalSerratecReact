@@ -22,7 +22,6 @@ export function Cliente() {
     <Container>
       <Header />
       {cliente.map((res, index) => {
-        console.log("dadadadada", res.endereco.cep);
         return (
           <div className="Clientes" key={index}>
             <span id="cliente">{res.id}</span>
@@ -41,6 +40,10 @@ export function Cliente() {
             <span id="cliente">{res.pedido[0].dataPedido}</span>
             <span id="cliente">{res.pedido[0].status}</span>
             <span id="cliente">{res.pedido[0].id}</span>
+            <span id="cliente">{res.pedido[0].itemPedido[0].valorLiquido}</span>
+            <span id="cliente">{res.pedido[0].itemPedido[0].produto.nome}</span>
+            <span id="cliente">{res.pedido[0].itemPedido[0].produto.descricao}</span>
+
           </div>
         );
       })}
