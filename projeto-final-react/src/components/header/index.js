@@ -16,10 +16,10 @@ export function Header() {
               <Link className="linkref" to="/">Home</Link>
             </li>
             <li>
-              <Link to="/areaCliente">Cliente</Link>
+              <Link to="/clientes">Clientes</Link>
             </li>
             <li>
-              <Link to="/dadaadaa">Parte2</Link>
+              <Link to="/produtos">Produtos</Link>
             </li>
             <li>
               <Link to="/dadadadad">Sobre</Link>
