@@ -2,7 +2,7 @@ import React from "react";
 
 import { Navbar, Container } from "./styled.js";
 import { Link } from "react-router-dom";
-import logo from '../../utils/imagens/ecommerce.png'
+import logo from '../../utils/imagens/carrinho.png'
 
 export function Header() {
   return (

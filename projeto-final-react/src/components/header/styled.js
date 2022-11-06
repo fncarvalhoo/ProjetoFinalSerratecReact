@@ -7,8 +7,8 @@ export const Container = styled.div`
   padding: 1em;
 
   img{
-    width: 40px;
-    height: 40px;
+    width: 100px;
+    height: 80px;
   }
   ul{
     display: flex;
