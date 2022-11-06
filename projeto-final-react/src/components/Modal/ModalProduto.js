@@ -168,7 +168,7 @@ export const ModalProduto = forwardRef((props, ref) => {
                 onChange={(event) => setValor(parseFloat(event.target.value))}
               />
             </p>
-            {/* <p>
+            <p>
               <label
                 style={{ width: "20%" }}
                 htmlFor="quantidadeEstoqueProduto"
@@ -182,7 +182,7 @@ export const ModalProduto = forwardRef((props, ref) => {
                 value={quantidadeEstoque}
                 onChange={(event) => setquantidadeEstoque(parseInt(event.target.value))}
               />
-            </p> */}
+            </p>
           </div>
           <button style={{ width: "100%" }} onClick={btnAction}>
             Salvar

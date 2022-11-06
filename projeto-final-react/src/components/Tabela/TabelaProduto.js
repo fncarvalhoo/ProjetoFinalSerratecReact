@@ -50,7 +50,7 @@ export function TabelaProduto() {
       <button
         onClick={() =>
           handleClickOpen(
-            { nome: "", valorUnitario: 0, descricao: ""},
+            { nome: "", valorUnitario: 0, quantidadeEstoque: 0, descricao: ""},
             "cadastrar"
           )
         }
@@ -65,6 +65,7 @@ export function TabelaProduto() {
               <TableCell>Id</TableCell>
               <TableCell>Nome</TableCell>
               <TableCell align="right">Valor</TableCell>
+              <TableCell align="right">Estoque</TableCell>
               <TableCell align="right">Descricao</TableCell>
               <TableCell align="right">Ações</TableCell>
             </TableRow>
@@ -78,6 +79,7 @@ export function TabelaProduto() {
                 <TableCell align="left">{produto.id}</TableCell>
                 <TableCell align="left">{produto.nome}</TableCell>
                 <TableCell align="right">{produto.valorUnitario}</TableCell>
+                <TableCell align="right">{produto.quantidadeEstoque}</TableCell>
                 <TableCell align="right">{produto.descricao}</TableCell>
                 <TableCell align="right">
                   <button onClick={() => handleClickOpen(produto, "editar")}>

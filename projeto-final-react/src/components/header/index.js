@@ -21,9 +21,7 @@ export function Header() {
             <li>
               <Link to="/produtos">Produtos</Link>
             </li>
-            <li>
-              <Link to="/dadadadad">Sobre</Link>
-            </li>
+
           </ul>
       </Container>
     </Navbar>

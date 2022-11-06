@@ -12,7 +12,6 @@ export function Router() {
       <Route path="/" element={<Home />} />
       <Route path="/clientes" element={<Cliente />} />
       <Route path="/produtos" element={<Produto />} />
-      <Route path="/Sobre" element={<Header />} />
     </Routes>
   );
 }
