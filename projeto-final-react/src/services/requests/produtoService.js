@@ -9,9 +9,17 @@ const deleteProduct = (id) => {
 
 }
 
+const postImage = (produto, file) => {
+  let formData = new FormData();
+  formData.append('imagemProduto', file);
+  formData.append('produto', new Blob([JSON.stringify(produto)], {type:'application/json'}));
+  return api.post(`produtos`, formData)
+}
+
 export default {
   getProducts,
-  deleteProduct
+  deleteProduct,
+  postImage
 };
 
 

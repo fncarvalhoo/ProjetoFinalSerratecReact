@@ -86,3 +86,7 @@ export const Dados = styled.div`
 
   
 `;
+
+export const Form = styled.form`
+
+`;

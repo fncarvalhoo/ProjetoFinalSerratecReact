@@ -1,11 +1,46 @@
 import { useState, useEffect } from "react";
 import produtoService from "../../services/requests/produtoService";
 import { Header } from "../../components/header/index";
-import { Container, Content, Dados } from "../../pages/Produto/styled.js";
+import { Form, Container, Content, Dados } from "../../pages/Produto/styled.js";
+import Modal from "react-modal";
+import Box from "@mui/material/Box";
+
+Modal.setAppElement("#root");
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 600,
+  height: 600,
+  bgcolor: "background.paper",
+  border: "2px solid gray",
+  boxShadow: 24,
+  p: 4,
+};
 
 export function Produto() {
   const [produto, setProdutos] = useState([]);
+  const [id, setId] = useState(0);
+  const [nome, setNome] = useState('');
+  const [valorUnitario, setValorUnitario] = useState(0);
+  const [descricao, setDescricao] = useState('');
+  const [quantidadeEstoque, setQuantidadeEstoque] = useState(0);
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [productImage, setProductImage] = useState();
+
+
+
+
+  console.log("imageeeem", productImage);
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   useEffect(() => {
     produtoService
@@ -22,6 +57,35 @@ export function Produto() {
   return (
     <Container>
       <Header />
+      <div> 
+        <button onClick={openModal}>Inserir</button>
+        <Modal
+              isOpen={modalIsOpen}
+              onRequestClose={closeModal}
+              contentLabel="Example Modal"
+              overlayClassName="modal-overlay"
+              className="modal-content"
+           >
+           <Box sx={style}>
+            <Form>
+              <ul>
+               <li><textarea placeholder="Nome"
+                required
+                value={nome}
+                ></textarea></li> 
+                <li><input onChange={(e) => setProductImage(e.target.files[0])} type="file" id="file" name="file" multiple /> </li>
+                <button>Submit</button>
+              </ul>
+            </Form>
+              <button onClick={closeModal}>Close</button>
+           </Box>
+
+
+        </Modal>
+      
+      </div>
+
+
       <Content>
         <span className="contudo">Id</span>
         <span className="conteudo">Produto</span>
@@ -52,3 +116,4 @@ export function Produto() {
     </Container>
   );
 }
+
