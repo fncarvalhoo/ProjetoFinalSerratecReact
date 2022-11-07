@@ -61,7 +61,7 @@ export const ModalProduto = forwardRef((props, ref) => {
     const produto = {
       nome: nome,
       valor: valorUnitario,
-      descricao:descricao,
+      descricao: descricao,
       quantidadeEstoque: quantidadeEstoque,
     };
 
@@ -96,17 +96,17 @@ export const ModalProduto = forwardRef((props, ref) => {
   };
 
   const actionRef = (action) => {
-    console.log(action)
-    setAction(action)
-  }
+    console.log(action);
+    setAction(action);
+  };
 
   const btnAction = () => {
-    if(action === "editar") {
-      editarProduto()
+    if (action === "editar") {
+      editarProduto();
     }
 
-    if(action === "cadastrar") {
-      cadastrarProduto()
+    if (action === "cadastrar") {
+      cadastrarProduto();
     }
   };
 
@@ -126,7 +126,13 @@ export const ModalProduto = forwardRef((props, ref) => {
                 Id:{" "}
               </label>
               <input
-                style={{ width: "100%", backgroundColor: "#5c0d76", borderRadius:"10px" }}
+                style={{
+                  width: "100%",
+                  backgroundColor: "#5c0d76",
+                  borderRadius: "10px",
+                  color: "white",
+                  textIndent: "5px",
+                }}
                 disabled
                 id="idProduto"
                 type="number"
@@ -135,11 +141,17 @@ export const ModalProduto = forwardRef((props, ref) => {
               />
             </p>
             <p>
-              <label style={{ width: "20%",  }} htmlFor="nomeProduto">
+              <label style={{ width: "20%" }} htmlFor="nomeProduto">
                 Nome:{" "}
               </label>
               <input
-                style={{ width: "100%", backgroundColor: "#5c0d76", borderRadius:"10px", color:"white", textIndent:"5px" }}
+                style={{
+                  width: "100%",
+                  backgroundColor: "#5c0d76",
+                  borderRadius: "10px",
+                  color: "white",
+                  textIndent: "5px",
+                }}
                 id="nomeProduto"
                 type="text"
                 value={nome}
@@ -151,7 +163,13 @@ export const ModalProduto = forwardRef((props, ref) => {
                 Valor:{" "}
               </label>
               <input
-                style={{ width: "100%", backgroundColor: "#5c0d76", borderRadius:"10px", color:"white", textIndent:"5px" }}
+                style={{
+                  width: "100%",
+                  backgroundColor: "#5c0d76",
+                  borderRadius: "10px",
+                  color: "white",
+                  textIndent: "5px",
+                }}
                 id="valorProduto"
                 type="number"
                 value={valorUnitario}
@@ -163,7 +181,13 @@ export const ModalProduto = forwardRef((props, ref) => {
                 Descrição:{" "}
               </label>
               <input
-                style={{ width: "100%", backgroundColor: "#5c0d76", borderRadius:"10px", color:"white", textIndent:"5px" }}
+                style={{
+                  width: "100%",
+                  backgroundColor: "#5c0d76",
+                  borderRadius: "10px",
+                  color: "white",
+                  textIndent: "5px",
+                }}
                 id="descricaoProduto"
                 type="text"
                 value={descricao}
@@ -178,15 +202,35 @@ export const ModalProduto = forwardRef((props, ref) => {
                 Quantidade em estoque:{" "}
               </label>
               <input
-                style={{width: "100%", backgroundColor: "#5c0d76", borderRadius:"10px", color:"white", textIndent:"5px" }}
+                style={{
+                  width: "100%",
+                  backgroundColor: "#5c0d76",
+                  borderRadius: "10px",
+                  color: "white",
+                  textIndent: "5px",
+                }}
                 id="quantidadeEstoqueProduto"
                 type="number"
                 value={quantidadeEstoque}
-                onChange={(event) => setquantidadeEstoque(parseInt(event.target.value))}
+                onChange={(event) =>
+                  setquantidadeEstoque(parseInt(event.target.value))
+                }
               />
             </p>
           </div>
-          <button style={{height:"20px", width: "50%", backgroundColor: "#5c0d76", borderRadius:"10px", color:"white", border:"none", marginLeft:"25%", marginTop:"10px" }} onClick={btnAction}>
+          <button
+            style={{
+              height: "20px",
+              width: "50%",
+              backgroundColor: "#5c0d76",
+              borderRadius: "10px",
+              color: "white",
+              border: "none",
+              marginLeft: "25%",
+              marginTop: "10px",
+            }}
+            onClick={btnAction}
+          >
             Salvar
           </button>
         </Typography>
