@@ -3,6 +3,7 @@ import React, { forwardRef, useImperativeHandle, useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import { borderRadius } from "@mui/system";
 
 const style = {
   position: "absolute",
@@ -10,8 +11,9 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 400,
+  borderRadius: 10,
   bgcolor: "background.paper",
-  border: "2px solid #000",
+  border: "2px solid #5c0d76",
   boxShadow: 24,
   p: 4,
 };
@@ -124,7 +126,7 @@ export const ModalProduto = forwardRef((props, ref) => {
                 Id:{" "}
               </label>
               <input
-                style={{ width: "100%" }}
+                style={{ width: "100%", backgroundColor: "#5c0d76", borderRadius:"10px" }}
                 disabled
                 id="idProduto"
                 type="number"
@@ -133,11 +135,11 @@ export const ModalProduto = forwardRef((props, ref) => {
               />
             </p>
             <p>
-              <label style={{ width: "20%" }} htmlFor="nomeProduto">
+              <label style={{ width: "20%",  }} htmlFor="nomeProduto">
                 Nome:{" "}
               </label>
               <input
-                style={{ width: "100%" }}
+                style={{ width: "100%", backgroundColor: "#5c0d76", borderRadius:"10px", color:"white", textIndent:"5px" }}
                 id="nomeProduto"
                 type="text"
                 value={nome}
@@ -149,7 +151,7 @@ export const ModalProduto = forwardRef((props, ref) => {
                 Valor:{" "}
               </label>
               <input
-                style={{ width: "100%" }}
+                style={{ width: "100%", backgroundColor: "#5c0d76", borderRadius:"10px", color:"white", textIndent:"5px" }}
                 id="valorProduto"
                 type="number"
                 value={valorUnitario}
@@ -158,14 +160,14 @@ export const ModalProduto = forwardRef((props, ref) => {
             </p>
             <p>
               <label style={{ width: "20%" }} htmlFor="descricaoProduto">
-                Valor:{" "}
+                Descrição:{" "}
               </label>
               <input
-                style={{ width: "100%" }}
+                style={{ width: "100%", backgroundColor: "#5c0d76", borderRadius:"10px", color:"white", textIndent:"5px" }}
                 id="descricaoProduto"
                 type="text"
                 value={descricao}
-                onChange={(event) => setValor(parseFloat(event.target.value))}
+                onChange={(event) => setDescricao(event.target.value)}
               />
             </p>
             <p>
@@ -176,7 +178,7 @@ export const ModalProduto = forwardRef((props, ref) => {
                 Quantidade em estoque:{" "}
               </label>
               <input
-                style={{ width: "100%" }}
+                style={{width: "100%", backgroundColor: "#5c0d76", borderRadius:"10px", color:"white", textIndent:"5px" }}
                 id="quantidadeEstoqueProduto"
                 type="number"
                 value={quantidadeEstoque}
@@ -184,7 +186,7 @@ export const ModalProduto = forwardRef((props, ref) => {
               />
             </p>
           </div>
-          <button style={{ width: "100%" }} onClick={btnAction}>
+          <button style={{height:"20px", width: "50%", backgroundColor: "#5c0d76", borderRadius:"10px", color:"white", border:"none", marginLeft:"25%", marginTop:"10px" }} onClick={btnAction}>
             Salvar
           </button>
         </Typography>
