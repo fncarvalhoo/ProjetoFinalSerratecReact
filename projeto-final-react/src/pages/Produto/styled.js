@@ -18,25 +18,37 @@ export const Content = styled.div`
     width: 14%;
     display: flex;
     justify-content: center;
+    margin-top: 40px;
   }
 
+.botao{
+  flex-direction: column;
   button{
-        width: 14%;
+        width: 100%;
         justify-content: center;
         margin-top: 1rem;
         border-radius: 8px;
         border: 0;
         font-size: 20px;
-        background-color: #0000dd;
+        background-color: #5c0d76;
         color: white;
         transition: background-color 0.5s;
     }
 
     button:hover{
-        background: #0D6AE7;
+        background: #c001ff;
     }
-
-  
+  }
+    div{
+      width: 14%;
+    img{
+      width: 100px;
+      height: auto;
+      display: flex;
+      margin-left: 60px;
+      justify-content: center;
+    }
+    }
 
   #produto{
     font-size: 15px;
@@ -97,4 +109,34 @@ text-decoration: none;
     resize: none;
     width: 100%;
   }
+`;
+
+export const Insertproducts = styled.div`
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+
+  h1{
+      margin-top: 20px;
+      font-style: italic;
+      color: #5c0d76;
+      text-decoration: underline solid #c001ff;
+  }
+
+  button{
+    margin-top: 20px;
+    width: 20%;
+    padding: 5px;
+    border-radius: 8px;
+        border: 0;
+        font-size: 20px;
+        background-color: #5c0d76;
+        color: white;
+        transition: background-color 0.5s;
+  }
+  button:hover{
+        background: #c001ff;
+    }
 `;

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import produtoService from "../../services/requests/produtoService";
 import { Header } from "../../components/header/index";
-import { Form, Container, Content, Dados } from "../../pages/Produto/styled.js";
+import { Insertproducts, Form, Container, Content, Dados } from "../../pages/Produto/styled.js";
 import Modal from "react-modal";
 import Box from "@mui/material/Box";
 import { Link, useNavigate } from 'react-router-dom'
@@ -94,8 +94,11 @@ export function Produto() {
   return (
     <Container>
       <Header />
-      <div> 
-        <button onClick={openModal}>Inserir</button>
+      <div>
+        <Insertproducts>
+          <h1>Catálogo de produtos</h1>
+          <button onClick={openModal}>Inserir produto</button>
+        </Insertproducts>
         <Modal
               isOpen={modalIsOpen}
               onRequestClose={closeModal}
@@ -135,28 +138,30 @@ export function Produto() {
       </div>
 
       <Content>
-        <span className="contudo">Id</span>
+        <span className="contudo">Imagem</span>
         <span className="conteudo">Produto</span>
         <span className="conteudo">Descrição</span>
         <span className="conteudo">Quant Estoque</span>
         <span className="conteudo">Valor</span>
         <span className="conteudo">Categoria</span>
-        <span className="conteudo">MAIS</span>
+        <span className="conteudo">Opções</span>
       </Content>
       <div className="divisao"></div>
       {produto.map((res, index) => {
         return (
           <div className="Clientes" key={index}>
             <Content>
-              <span id="produto">{res.id}</span>
+              <div><img src={`data:image/png;base64,${res.imagemProduto}`}/></div>
               <span id="produto">{res.nome}</span>
               <span id="produto">{res.descricao}</span>
               <span id="produto">{res.quantidadeEstoque}</span>
               <span id="produto">{res.valorUnitario}</span>
               <span id="produto">{res.categoria.nome}</span>
+              <div className="botao"> <button>editar</button>
               <button onClick={() => handleDeleteProduct(res.id)}>
-                delete
-              </button>
+                deletar
+              </button> 
+              </div>  
             </Content>
           </div>
         );
