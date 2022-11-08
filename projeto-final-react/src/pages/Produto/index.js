@@ -4,6 +4,7 @@ import { Header } from "../../components/header/index";
 import { Form, Container, Content, Dados } from "../../pages/Produto/styled.js";
 import Modal from "react-modal";
 import Box from "@mui/material/Box";
+import { Link, useNavigate } from 'react-router-dom'
 
 Modal.setAppElement("#root");
 
@@ -29,9 +30,11 @@ export function Produto() {
   const [quantidadeEstoque, setQuantidadeEstoque] = useState(0);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [productImage, setProductImage] = useState();
+  const navigate = useNavigate();
 
-
-
+  function refreshPage() {
+    window.location.reload(false);
+  }
 
   console.log("imageeeem", productImage);
   function openModal() {
@@ -54,6 +57,40 @@ export function Produto() {
       });
   }, []);
 
+  function handleRegisterProduct(event) {
+    event.preventDefault();
+    const data = {
+      nome: nome,
+      valorUnitario: valorUnitario,
+      descricao: descricao,
+      quantidadeEstoque: quantidadeEstoque ,
+      categoria: {
+        id: 1
+    }
+  }
+    produtoService.postImage(data, productImage )
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+    refreshPage();
+  }
+
+  
+
+  function handleDeleteProduct(id) {
+    produtoService.deleteProduct(id)
+    .then((response) => {
+      refreshPage();
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+  }
   return (
     <Container>
       <Header />
@@ -69,12 +106,24 @@ export function Produto() {
            <Box sx={style}>
             <Form>
               <ul>
-               <li><textarea placeholder="Nome"
+               <li><input onChange={(e) => setNome(e.target.value)} placeholder="Nome"
                 required
                 value={nome}
-                ></textarea></li> 
+                ></input></li>
+                 <li><input onChange={(e) => setDescricao(e.target.value)} placeholder="Descrição"
+                required
+                value={descricao}
+                ></input></li> 
+                 <li><input onChange={(e) => setQuantidadeEstoque(e.target.value)} placeholder="Quantidade de Estoque"
+                required
+                value={quantidadeEstoque}
+                ></input></li>  
+                <li><input onChange={(e) => setValorUnitario(e.target.value)} placeholder="Valor por Unidade"
+                required
+                value={valorUnitario}
+                ></input></li>  
                 <li><input onChange={(e) => setProductImage(e.target.files[0])} type="file" id="file" name="file" multiple /> </li>
-                <button>Submit</button>
+                <button onClick={handleRegisterProduct}>Submit</button>
               </ul>
             </Form>
               <button onClick={closeModal}>Close</button>
@@ -84,7 +133,6 @@ export function Produto() {
         </Modal>
       
       </div>
-
 
       <Content>
         <span className="contudo">Id</span>
@@ -106,7 +154,7 @@ export function Produto() {
               <span id="produto">{res.quantidadeEstoque}</span>
               <span id="produto">{res.valorUnitario}</span>
               <span id="produto">{res.categoria.nome}</span>
-              <button onClick={() => produtoService.deleteProduct(res.id)}>
+              <button onClick={() => handleDeleteProduct(res.id)}>
                 delete
               </button>
             </Content>

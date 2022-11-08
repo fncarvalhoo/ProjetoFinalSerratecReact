@@ -1,4 +1,4 @@
-import { api } from "../api/api";
+import { api, apiFile } from "../api/api";
 
 const getProducts = () => {
   return api.get(`produtos`);
@@ -13,7 +13,7 @@ const postImage = (produto, file) => {
   let formData = new FormData();
   formData.append('imagemProduto', file);
   formData.append('produto', new Blob([JSON.stringify(produto)], {type:'application/json'}));
-  return api.post(`produtos`, formData)
+  return apiFile.post(`produtos`, formData)
 }
 
 export default {

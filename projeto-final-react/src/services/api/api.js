@@ -6,3 +6,10 @@ export const api = axios.create({
         'Content-Type': 'application/json'
     }
 })
+
+export const apiFile = axios.create({
+    baseURL:"http://localhost:8080/",
+    headers: {
+        "Content-Type": "multipart/form-data",
+    }
+})

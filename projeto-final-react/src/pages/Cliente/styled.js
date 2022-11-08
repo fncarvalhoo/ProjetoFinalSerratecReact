@@ -65,6 +65,7 @@ export const Dados = styled.div`
   }
   ul{
     margin-bottom: 20px;
+    list-style-type: none;
   }
 
   

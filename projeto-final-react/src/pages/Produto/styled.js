@@ -88,5 +88,13 @@ export const Dados = styled.div`
 `;
 
 export const Form = styled.form`
+text-decoration: none;
 
+    ul{
+      list-style-type: none;
+    }
+  textarea{
+    resize: none;
+    width: 100%;
+  }
 `;
