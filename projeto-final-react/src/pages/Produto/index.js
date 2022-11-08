@@ -11,6 +11,7 @@ import {
 import Modal from "react-modal";
 import Box from "@mui/material/Box";
 import { Link, useNavigate } from "react-router-dom";
+import { ModalEdit } from "../../components/Modal/ModalEdit";
 
 Modal.setAppElement("#root");
 
@@ -28,8 +29,10 @@ const style = {
   p: 4,
 };
 
+
 export function Produto() {
   const [produtos, setProdutos] = useState([]);
+  const [idSelected, setIdSelected] = useState();
   const [nome, setNome] = useState("");
   const [valorUnitario, setValorUnitario] = useState(0);
   const [descricao, setDescricao] = useState("");
@@ -51,14 +54,15 @@ export function Produto() {
     setModalInsert(false);
   }
 
-  function openModalEdit(index) {
-    const produto = produtos.at(index);
-    setDescricao(produto.descricao);
-    setNome(produto.nome);
-    setValorUnitario(produto.valorUnitario);
-    setQuantidadeEstoque(produto.quantidadeEstoque);
-    setProductImage(produto.imagemProduto);
-    console.log(produto);
+  function openModalEdit(id) {
+    // const produto = produtos.at(index);
+    // setDescricao(produto.descricao);
+    // setNome(produto.nome);
+    // setValorUnitario(produto.valorUnitario);
+    // setQuantidadeEstoque(produto.quantidadeEstoque);
+    // setProductImage(produto.imagemProduto);
+    // console.log(produto);,
+    setIdSelected(id);
     setModalEdit(true);
   }
 
@@ -78,18 +82,6 @@ export function Produto() {
       });
   }, []);
 
-  //Get by id
-  // useEffect(() => {
-  //   produtoService
-  //     .getProductById(id)
-  //     .then((response) => {
-  //       console.log(response.data);
-  //       setProdutos(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
 
   function handleRegisterProduct(event) {
     event.preventDefault();
@@ -114,7 +106,7 @@ export function Produto() {
     refreshPage();
   }
 
-  function handleEditProduct(event, id) {
+  function handleEditProduct(event, idSelected) {
     event.preventDefault();
     const dado = {
       nome: nome,
@@ -126,8 +118,9 @@ export function Produto() {
       },
     };
 
+  console.log(dado);
     produtoService
-      .editProduct(id, dado, productImage)
+      .editProduct(idSelected, dado, productImage)
       .then((response) => {
         console.log(response);
       })
@@ -137,17 +130,6 @@ export function Produto() {
     refreshPage();
   }
 
-  function handleGetProductById(id) {
-    produtoService
-      .getProductById(id)
-      .then((response) => {
-        refreshPage();
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
 
   function handleDeleteProduct(id) {
     produtoService
@@ -269,90 +251,7 @@ export function Produto() {
                 <span id="produto">{res.valorUnitario}</span>
                 <span id="produto">{res.categoria.nome}</span>
                 <div className="botao">
-                  <button onClick={()=>openModalEdit(index)}>editar</button>
-                  <Modal
-                    isOpen={modalEdit}
-                    onRequestClose={closeModalEdit}
-                    contentLabel="Example Modal"
-                    overlayClassName="modal-overlay"
-                    className="modal-content"
-                  >
-                    <Box sx={style}>
-                      <Form>
-                        <ul>
-                          <li>
-                            <p>Nome:</p>
-                            <input
-                              onChange={(e) => setNome(e.target.value)}
-                              required
-                              value={nome}
-                            ></input>
-                          </li>
-                          <li>
-                            <p>Descrição:</p>
-                            <input
-                              onChange={(e) => setDescricao(e.target.value)}
-                              required
-                              value={descricao}
-                            ></input>
-                          </li>
-                          <li>
-                            <p>Quantidade de estoque:</p>
-                            <input
-                              onChange={(e) =>
-                                setQuantidadeEstoque(parseInt(e.target.value))
-                              }
-                              required
-                              value={quantidadeEstoque}
-                            ></input>
-                          </li>
-                          <li>
-                            <p>Valor por unidade:</p>
-                            <input
-                              onChange={(e) =>
-                                setValorUnitario(parseFloat(e.target.value))
-                              }
-                              required
-                              value={valorUnitario}
-                            ></input>
-                          </li>
-                          <li>
-                            <p>Imagem:</p>
-                            <input
-                              className="inputImage"
-                              onChange={(e) =>
-                                setProductImage(e.target.files[0])
-                              }
-                              type="file"
-                              id="file"
-                              name="file"
-                              multiple
-                            />{" "}
-                          </li>
-                          <center className="buttonRegister">
-                            <button onClick={() => handleEditProduct(res.id)}>
-                              Editar
-                            </button>
-                          </center>
-                        </ul>
-                      </Form>
-                      <center>
-                        <button
-                          style={{
-                            color: "white",
-                            padding: "7px",
-                            backgroundColor: "#5c0d76",
-                            border: "none",
-                            borderRadius: 5,
-                          }}
-                          className="buttonClose"
-                          onClick={closeModalEdit}
-                        >
-                          Fechar
-                        </button>
-                      </center>
-                    </Box>
-                  </Modal>
+                  <button onClick={()=>openModalEdit(res.id)}>editar</button>
                   <button onClick={() => handleDeleteProduct(res.id)}>
                     deletar
                   </button>
@@ -363,6 +262,22 @@ export function Produto() {
         })}
       </Container>
       <Footer />
+      <ModalEdit
+          modalEdit={modalEdit}
+          closeModalEdit={closeModalEdit}
+          setDescricao={setDescricao} 
+          setNome={setNome}
+          setProductImage={setProductImage} 
+          setQuantidadeEstoque={setQuantidadeEstoque}
+          setValorUnitario={setValorUnitario}
+          nome={nome}
+          quantidadeEstoque={quantidadeEstoque}
+          valorUnitario={valorUnitario}
+          productImage={productImage}
+          descricao={descricao}
+          idSelected={idSelected}
+          handleEditProduct={handleEditProduct}
+      />
     </div>
   );
 }

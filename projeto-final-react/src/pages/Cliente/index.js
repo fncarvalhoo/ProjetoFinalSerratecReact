@@ -23,19 +23,31 @@ const style = {
 };
 
 export function Cliente() {
-  const [cliente, setClients] = useState([]);
+  const [clientes, setClients] = useState([]);
+  const [nomeCompleto, setNomeCompleto] = useState("");
+  const [nomeUsuario, setNomeUsuario] = useState("");
+  const [email, setEmail] = useState("");
+  const [telefone, setTelefone] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [cep, setCep] = useState("");
+  const [numero, setNumero] = useState("");
+  const [complemento, setComplemento] = useState("");
+  const [logradouro, setLogradouro] = useState("");
+  const [bairro, setBairro] = useState("");
+  const [uf, setUf] = useState("");
+  const [status, setStatus] = useState("");
+  const [valorLiquido, setValorLiquido] = useState(0);
+  const [nomeProduto, setNomeProduto] = useState("");
+  const [descricao, setDescricao] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  function openModal(Id) {
-    // clienteService
-    //   .getClientsById(Id)
-    //   .then((response) => {
-    //     console.log(response.data);
-    //     setClients(response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+  function openModal(index) {
+    const cliente = clientes.at(index);
+    setNomeCompleto(cliente.nomeCompleto);
+    setNomeUsuario(cliente.nomeUsuario);
+    setCep(cliente.endereco[0].cep);
+
+    console.log(cliente);
     setIsOpen(true);
   }
 
@@ -69,7 +81,7 @@ export function Cliente() {
         <span className="conteudo">MAIS</span>
       </Content>
       <div className="divisao"></div>
-      {cliente.map((res, index) => {
+      {clientes.map((res, index) => {
         return (
           <div className="Clientes" key={index}>
             <Content>
@@ -79,7 +91,7 @@ export function Cliente() {
               <span id="cliente">{res.telefone}</span>
               <span id="cliente">{res.cpf}</span>
               <span id="cliente">{res.endereco[0].cep}</span>
-              <button onClick={() => openModal(res.id)}>Open</button>
+              <button onClick={() => openModal(index)}>Open</button>
             </Content>
           </div>
         );
@@ -93,7 +105,7 @@ export function Cliente() {
         className="modal-content"
       >
         <Box sx={style}>
-          {cliente.map((res, index) => {
+          {clientes.map((res, index) => {
             return (
               <div className="Complete" key={index}>
                 <Dados>
@@ -102,7 +114,7 @@ export function Cliente() {
                   </div>
                   <ul>
                     <li>
-                      Nome Completo: <span id="dados">{res.nomeCompleto}</span>
+                      {/* Nome Completo: <span id="dados">{res.nomeCompleto}</span> */}
                     </li>
                     <li>
                       Nome de usuário: <span id="dados">{res.nomeUsuario}</span>

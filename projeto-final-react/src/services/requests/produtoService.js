@@ -20,6 +20,7 @@ const postImage = (produto, file) => {
 }
 
 const editProduct = (id, produto, file) =>{
+  console.log("55555",id, produto, file);
   let formData = new FormData();
   formData.append('imagemProduto', file);
   formData.append('produto', new Blob([JSON.stringify(produto)], {type:'application/json'}));
