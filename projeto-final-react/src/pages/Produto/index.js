@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import produtoService from "../../services/requests/produtoService";
 import { Header } from "../../components/header/index";
-import { Insertproducts, Form, Container, Content, Dados } from "../../pages/Produto/styled.js";
+import { Insertproducts, Form, Container, Content } from "../../pages/Produto/styled.js";
 import Modal from "react-modal";
 import Box from "@mui/material/Box";
 import { Link, useNavigate } from 'react-router-dom'
@@ -24,12 +24,12 @@ const style = {
 
 export function Produto() {
   const [produto, setProdutos] = useState([]);
-  const [id, setId] = useState(0);
   const [nome, setNome] = useState('');
   const [valorUnitario, setValorUnitario] = useState(0);
   const [descricao, setDescricao] = useState('');
   const [quantidadeEstoque, setQuantidadeEstoque] = useState(0);
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const [modalInsert, setModalInsert] = useState(false);
+  const [modalEdit, setModalEdit] = useState(false);
   const [productImage, setProductImage] = useState();
   const navigate = useNavigate();
 
@@ -37,13 +37,20 @@ export function Produto() {
     window.location.reload(false);
   }
 
-  console.log("imageeeem", productImage);
-  function openModal() {
-    setIsOpen(true);
+  function openModalInsert() {
+    setModalInsert(true);
   }
 
-  function closeModal() {
-    setIsOpen(false);
+  function closeModalInsert() {
+    setModalInsert(false);
+  }
+
+  function openModalEdit() {
+    setModalEdit(true);
+  }
+
+  function closeModalEdit() {
+    setModalEdit(false);
   }
 
   useEffect(() => {
@@ -57,6 +64,21 @@ export function Produto() {
         console.log(error);
       });
   }, []);
+  
+
+  //Get by id
+  // useEffect(() => {
+  //   produtoService
+  //     .getProductById(id)
+  //     .then((response) => {
+  //       console.log(response.data);
+  //       setProdutos(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
+
 
   function handleRegisterProduct(event) {
     event.preventDefault();
@@ -69,6 +91,7 @@ export function Produto() {
         id: 1
     }
   }
+
     produtoService.postImage(data, productImage )
     .then((response) => {
       console.log(response);
@@ -79,6 +102,38 @@ export function Produto() {
     refreshPage();
   }
 
+  function handleEditProduct(event, id){
+    event.preventDefault();
+    const dado = {
+      nome: nome,
+      valorUnitario: valorUnitario,
+      descricao: descricao,
+      quantidadeEstoque: quantidadeEstoque ,
+      categoria: {
+        id: 1
+    }
+  }
+
+    produtoService.editProduct(id, dado, productImage)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+    refreshPage();
+  }
+  
+  function handleGetProductById(id) {
+    produtoService.getProductById(id)
+    .then((response) => {
+      refreshPage();
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
   
 
   function handleDeleteProduct(id) {
@@ -98,11 +153,11 @@ export function Produto() {
       <div>
         <Insertproducts>
           <h1>Catálogo de produtos</h1>
-          <button onClick={openModal}>Inserir produto</button>
+          <button onClick={openModalInsert}>Inserir produto</button>
         </Insertproducts>
         <Modal
-              isOpen={modalIsOpen}
-              onRequestClose={closeModal}
+              isOpen={modalInsert}
+              onRequestClose={closeModalInsert}
               contentLabel="Example Modal"
               overlayClassName="modal-overlay"
               className="modal-content"
@@ -133,7 +188,7 @@ export function Produto() {
               </ul>
             </Form>
             <center>
-              <button style={{color:"white", padding:"7px",backgroundColor:"#5c0d76", border: "none", borderRadius:5}} className="buttonClose" onClick={closeModal}>Fechar</button>
+              <button style={{color:"white", padding:"7px",backgroundColor:"#5c0d76", border: "none", borderRadius:5}} className="buttonClose" onClick={closeModalInsert}>Fechar</button>
             </center>
               
            </Box>
@@ -163,7 +218,45 @@ export function Produto() {
               <span id="produto">{res.quantidadeEstoque}</span>
               <span id="produto">{res.valorUnitario}</span>
               <span id="produto">{res.categoria.nome}</span>
-              <div className="botao"> <button>editar</button>
+              <div className="botao"> 
+              <button onClick={openModalEdit}>editar</button>
+              <Modal
+              isOpen={modalEdit}
+              onRequestClose={closeModalEdit}
+              contentLabel="Example Modal"
+              overlayClassName="modal-overlay"
+              className="modal-content"
+               >
+                <Box sx={style}>
+                <Form>
+                <ul>
+               <li><p>Nome:</p><input onChange={(e) => setNome(e.target.value)}
+                required
+                value={nome}
+                ></input></li>
+                 <li><p>Descrição:</p><input onChange={(e) => setDescricao(e.target.value)}
+                required
+                value={descricao}
+                ></input></li> 
+                 <li><p>Quantidade de estoque:</p><input onChange={(e) => setQuantidadeEstoque(parseInt(e.target.value))}
+                required
+                value={quantidadeEstoque}
+                ></input></li>  
+                <li><p>Valor por unidade:</p><input onChange={(e) => setValorUnitario(parseFloat(e.target.value))}
+                required
+                value={valorUnitario}
+                ></input></li>  
+                <li><p>Imagem:</p><input className="inputImage" onChange={(e) => setProductImage(e.target.files[0])} type="file" id="file" name="file" multiple /> </li>
+                <center className="buttonRegister">
+                <button onClick={() =>handleEditProduct(res.id)}>Editar</button>
+                </center>
+              </ul>
+            </Form>  
+                <center>
+                <button style={{color:"white", padding:"7px",backgroundColor:"#5c0d76", border: "none", borderRadius:5}} className="buttonClose" onClick={closeModalEdit}>Fechar</button>
+                </center>
+                </Box>
+              </Modal>
               <button onClick={() => handleDeleteProduct(res.id)}>
                 deletar
               </button> 
