@@ -16,7 +16,8 @@ export const Container = styled.div`
     align-items: center;
 
     li{
-      margin-right: 1em;
+      margin-right: 4em;
+      font-weight: bold;
       
       a{
         font-size: 1.2em;

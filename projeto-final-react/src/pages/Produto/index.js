@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import produtoService from "../../services/requests/produtoService";
 import { Header } from "../../components/header/index";
+import { Footer } from "../../components/footer/index";
 import { Insertproducts, Form, Container, Content } from "../../pages/Produto/styled.js";
 import Modal from "react-modal";
 import Box from "@mui/material/Box";
@@ -148,6 +149,7 @@ export function Produto() {
 
   }
   return (
+    <div>
     <Container>
       <Header />
       <div>
@@ -266,6 +268,8 @@ export function Produto() {
         );
       })}
     </Container>
+    <Footer/>
+    </div>
   );
 }
 
