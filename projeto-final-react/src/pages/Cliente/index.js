@@ -27,7 +27,16 @@ export function Cliente() {
   const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal(Id) {
-    clienteService.getClientsById(Id)
+
+      // clienteService
+      //   .getClientsById(Id)
+      //   .then((response) => {
+      //     console.log(response.data);
+      //     setClients(response.data);
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //   });
     setIsOpen(true);
   }
 
