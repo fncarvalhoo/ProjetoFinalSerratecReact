@@ -67,8 +67,6 @@ export const Dados = styled.div`
     margin-bottom: 20px;
     list-style-type: none;
   }
-
-  
     
     button {
         padding: 1rem 1.5rem;

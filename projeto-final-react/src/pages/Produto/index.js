@@ -14,10 +14,11 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 600,
-  height: 600,
+  height: 425,
+  borderRadius:10,
   bgcolor: "background.paper",
-  border: "2px solid gray",
-  boxShadow: 24,
+  border: "2px solid #5c0d76",
+  boxShadow: "10px 10px 10px #5c0d76",
   p: 4,
 };
 
@@ -109,27 +110,32 @@ export function Produto() {
            <Box sx={style}>
             <Form>
               <ul>
-               <li><input onChange={(e) => setNome(e.target.value)} placeholder="Nome"
+               <li><p>Nome:</p><input onChange={(e) => setNome(e.target.value)}
                 required
                 value={nome}
                 ></input></li>
-                 <li><input onChange={(e) => setDescricao(e.target.value)} placeholder="Descrição"
+                 <li><p>Descrição:</p><input onChange={(e) => setDescricao(e.target.value)}
                 required
                 value={descricao}
                 ></input></li> 
-                 <li><input onChange={(e) => setQuantidadeEstoque(e.target.value)} placeholder="Quantidade de Estoque"
+                 <li><p>Quantidade de estoque:</p><input onChange={(e) => setQuantidadeEstoque(e.target.value)}
                 required
                 value={quantidadeEstoque}
                 ></input></li>  
-                <li><input onChange={(e) => setValorUnitario(e.target.value)} placeholder="Valor por Unidade"
+                <li><p>Valor por unidade:</p><input onChange={(e) => setValorUnitario(e.target.value)}
                 required
                 value={valorUnitario}
                 ></input></li>  
-                <li><input onChange={(e) => setProductImage(e.target.files[0])} type="file" id="file" name="file" multiple /> </li>
-                <button onClick={handleRegisterProduct}>Submit</button>
+                <li><p>Imagem:</p><input className="inputImage" onChange={(e) => setProductImage(e.target.files[0])} type="file" id="file" name="file" multiple /> </li>
+                <center className="buttonRegister">
+                <button onClick={handleRegisterProduct}>Cadastrar</button>
+                </center>
               </ul>
             </Form>
-              <button onClick={closeModal}>Close</button>
+            <center>
+              <button style={{color:"white", padding:"7px",backgroundColor:"#5c0d76", border: "none", borderRadius:5}} className="buttonClose" onClick={closeModal}>Fechar</button>
+            </center>
+              
            </Box>
 
 

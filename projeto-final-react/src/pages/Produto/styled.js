@@ -102,13 +102,33 @@ export const Dados = styled.div`
 export const Form = styled.form`
 text-decoration: none;
 
+
     ul{
       list-style-type: none;
     }
-  textarea{
-    resize: none;
-    width: 100%;
-  }
+
+    li{
+      margin: 15px;
+    }
+    input{
+      width: 100%;
+      background-color: #5c0d76;
+      border: none;
+      border-radius: 5px;
+      height: 20px;
+      text-indent: 5px;
+      color: white;
+      border: none;
+    }
+
+    button{
+      margin-bottom: 15px;
+      background-color: #5c0d76;
+      padding: 5px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+    }
 `;
 
 export const Insertproducts = styled.div`
@@ -128,9 +148,9 @@ export const Insertproducts = styled.div`
   button{
     margin-top: 20px;
     width: 20%;
-    padding: 5px;
+    padding: 7px;
     border-radius: 8px;
-        border: 0;
+        border: none;
         font-size: 20px;
         background-color: #5c0d76;
         color: white;
